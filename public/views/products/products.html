@@ -1,0 +1,13 @@
+<h2>Products</h2>
+
+<div ng-controller="productsCtrl as $ctrl" class="modal-product col-lg-3 col-md-4 col-xs-6 thumb" ng-repeat="product in products track by $index">
+  <a class="thumbnail" ng-click="showModal(product)">
+    <img class="img-responsive" src="http://placehold.it/400x300?text={{product.name}}" alt="">
+  </a>
+  <hr>
+  <button type="button" class="btn btn-default" ng-click="$ctrl.open('lg', null, product.id)">View Details</button>
+</div>
+
+<!-- <span ng-if="isModal">
+  <modal name="product.id" title="product.name" message="product.description"></modal>
+</span> -->

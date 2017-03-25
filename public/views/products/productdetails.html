@@ -1,0 +1,13 @@
+<form name="productForm" ng-show="editMode" ng-submit="CreateProfile(productForm.$valid)" novalidate>
+
+    <div class="input-group col-lg-6 col-md-6 col-sm-12 col-xs-12">
+      <label for="name">Product Name</label>
+        <input type="text" class="form-control" name="name" placeholder="Product Name" ng-model="product.name" required ng-required="true">
+        <p ng-show="productForm.name.$invalid && !productForm.fullname.$pristine" class="help-block">Product name is required.</p>
+    </div>
+
+
+    <div class="input-group">
+      <button type="submit" class="btn btn-primary" ng-disabled="productForm.$invalid">Save Changes</button>
+    </div>
+</form>
