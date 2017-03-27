@@ -1,43 +1,33 @@
-angular.module('ecommerce').controller('productsCtrl', function($scope, productsService, usersService/*, Files*/, $uibModal, $log, $document) {
-
-  var $ctrl = this;
+angular.module('ecommerce').controller('productsCtrl', function($scope, productsService, usersService/*, Files*/, $uibModal, $log) {
 
   $scope.init = function() {
     $scope.getProducts();
-    $scope.isModal = false;
     $scope.page = usersService.page;
-    $ctrl.items = $scope.products;
     console.log('productsCtrl', $scope.user);
   };
 
-  $scope.setPage = function(page) {
-    usersService.setPage(page);
-    $scope.page = usersService.page;
-  }
-  //
-  // $scope.showModal = function(product) {
-  //   $scope.product = product;
-  //   $scope.isModal = true;
-  // }
+  var $ctrl = this;
 
-  /*modal actions*/
-  $ctrl.animationsEnabled = true;
-
-  $ctrl.open = function (size, parentSelector, id) {
-    var parentElem = parentSelector ?
-      angular.element($document[0].querySelector('.modal-demo ' + parentSelector)) : undefined;
+  $ctrl.open = function (size, selectedProduct, editMode) {
     var modalInstance = $uibModal.open({
-      animation: $ctrl.animationsEnabled,
-      ariaLabelledBy: 'modal-title',
-      ariaDescribedBy: 'modal-body',
-      templateUrl: '../views/products/productmodal.html',
-      controller: 'productModalInstanceCtrl',
-      controllerAs: '$ctrl',
+      templateUrl: 'views/products/productdetailsmodal.html',
+      controller: function ($scope, $uibModalInstance, productsService) {
+        $scope.product = selectedProduct || {};
+        $scope.editMode = editMode;
+
+        $scope.ok = function () {
+          $uibModalInstance.close($scope.product);
+        };
+
+        $scope.cancel = function () {
+          $uibModalInstance.dismiss('cancel');
+        };
+      },
+      // controllerAs: '$ctrl',
       size: size,
-      appendTo: parentElem,
       resolve: {
-        items: function () {
-          return $ctrl.items;
+        product: function () {
+          return selectedProduct;
         }
       }
     });
@@ -49,21 +39,14 @@ angular.module('ecommerce').controller('productsCtrl', function($scope, products
     });
   };
 
+  $scope.setPage = function(page) {
+    usersService.setPage(page);
+    $scope.page = usersService.page;
+  }
+
   $scope.getProducts = function() {
     productsService.getProducts().then(function(response) {
       $scope.products = response;
-    })
-  }
-  $scope.getProduct = function(id) {
-    productsService.getProduct(id).then(function(response) {
-      $scope.product = response;
-      $ctrl.product = response;
-    })
-  }
-
-  $scope.deleteProduct = function(id) {
-    productsService.deleteProduct(id).then(function(response) {
-      $scope.getProducts();
     })
   }
 

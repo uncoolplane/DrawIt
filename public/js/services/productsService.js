@@ -21,14 +21,34 @@ angular.module('ecommerce').service('productsService', function($http) {
   }
 
   this.createProduct = function(product) {
-
+    return $http({
+        method: 'PUT',
+        url: '/api/product',
+        data: product
+      }).then(function(response) {
+        console.log('productsService', response.data);
+        return response.data;
+      })
   }
 
   this.updateProduct = function(product) {
-
+    return $http({
+        method: 'POST',
+        url: '/api/product',
+        data: product
+      }).then(function(response) {
+        console.log('productsService', response.data);
+        return response.data;
+      })
   }
 
   this.deleteProduct = function(id) {
-
+    return $http({
+        method: 'DELETE',
+        url: '/api/product/' + id
+      }).then(function(response) {
+        console.log('productsService', response.data);
+        return response.data;
+      })
   }
 })

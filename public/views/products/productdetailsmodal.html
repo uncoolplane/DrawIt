@@ -1,0 +1,54 @@
+<section ng-controller="productDetailsCtrl as productCtrl">
+
+<div class="modal-header">
+  <h3 class="modal-title" id="modal-title">{{product.name}}</h3>
+</div>
+<div class="modal-body" id="modal-body">
+  <div class="" ng-if="!editMode">
+    {{product.description}}
+
+    <div class="pull-right">{{product.unitprice}}</div>
+  </div>
+
+  <div class="" ng-if="editMode">
+    <form name="productForm">
+      <div class="input-group col-lg-6 col-md-6 col-sm-12 col-xs-12">
+        <label for="fullname">Product Name</label>
+          <input type="text" class="form-control" name="fullname" placeholder="Product Name" ng-model="product.name" required ng-required="true">
+          <p ng-show="productForm.fullname.$invalid && !productForm.fullname.$pristine" class="help-block">Product name is required.</p>
+      </div>
+      <div class="input-group col-lg-6 col-md-6 col-sm-12 col-xs-12">
+        <label for="unitprice">Unit Price</label>
+          <input type="text" class="form-control" name="unitprice" placeholder="Unit Price" ng-model="product.unitprice" required ng-required="true">
+          <p ng-show="productForm.unitprice.$invalid && !productForm.unitprice.$pristine" class="help-block">Unit price is required.</p>
+      </div>
+      <div class="input-group  col-lg-6 col-md-6 col-sm-12 col-xs-12">
+        <label for="pic">Image</label>
+          <input type="text" class="form-control" name="pic" placeholder="Image Url" ng-model="product.imageurl" required>
+          <p ng-show="productForm.pic.$invalid && !productForm.pic.$pristine" class="help-block">Product picture is required.</p>
+      </div>
+      <div class="input-group col-lg-6 col-md-6 col-sm-12 col-xs-12">
+        <label for="description">Description</label>
+          <textarea class="form-control" name="description" placeholder="Description" ng-model="product.description">
+        </textarea>
+      </div>
+  </form>
+  </div>
+
+</div>
+<div class="modal-footer">
+  <div ng-if="editMode">
+    <button class="btn btn-success" type="button" ng-click="productCtrl.updateProduct(product); ok()">Save Changes</button>
+
+    <button class="btn btn-warning" type="button" ng-disabled="userForm.$invalid" ng-click="cancel()">Cancel </button>
+  </div>
+
+  <div ng-if="!editMode">
+    <button class="btn btn-success" type="button" name="button">Add to Cart</button>
+
+    <button class="btn btn-warning" type="button" ng-click="cancel()">Close</button>
+  </div>
+
+</div>
+
+</section>
