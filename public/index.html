@@ -31,6 +31,7 @@
                 <ul class="nav navbar-nav">
                     <li><a ui-sref="home" ng-click="setPage('home')">Home</a></li>
                     <li><a ui-sref="products" ng-click="setPage('products')">Products</a></li>
+                    <li><a ui-sref="customers" ng-click="setPage('customers')">Customers</a></li>
                     <li><a ui-sref="contact" ng-click="setPage('contact')">Contact</a></li>
                 </ul>
                 <ul class="nav navbar-nav pull-right">
@@ -62,14 +63,18 @@
     <script src="js/app.js" charset="utf-8"></script>
     <script src="js/services/productsService.js" charset="utf-8"></script>
     <script src="js/services/usersService.js" charset="utf-8"></script>
+    <script src="js/services/customerService.js" charset="utf-8"></script>
 
     <!--Components-->
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/ng-grid/2.0.11/ng-grid.min.js"></script>
 
     <!--Controllers-->
     <script src="views/home/homeCtrl.js" charset="utf-8"></script>
     <script src="views/products/productsCtrl.js" charset="utf-8"></script>
     <script src="views/products/productDetailsCtrl.js" charset="utf-8"></script>
     <script src="views/home/contactCtrl.js" charset="utf-8"></script>
+    <script src="views/customers/customersCtrl.js" charset="utf-8"></script>
+    <script src="views/customers/customerDetailsCtrl.js" charset="utf-8"></script>
 </body>
 
 </html>

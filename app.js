@@ -13,6 +13,7 @@ var config = require('./config');
 var index = require('./routes/index');
 var users = require('./routes/users');
 var products = require('./routes/products');
+var customers = require('./routes/customers');
 
 var app = express();
 
@@ -44,6 +45,7 @@ var db = app.get('db');
 app.use('/', index);
 app.use('/users', users);
 app.use('/api', products);
+app.use('/api', customers);
 
 //files
 // app.use('/upload', express.static(__dirname + '/uploads'));

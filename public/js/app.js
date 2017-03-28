@@ -1,6 +1,6 @@
 /*https://angular-ui.github.io/bootstrap/*/
 
-angular.module('ecommerce', ['ui.router', 'ui.bootstrap'])
+angular.module('ecommerce', ['ui.router', 'ui.bootstrap', 'ngGrid'])
 //, 'ui-bootstrap'
 .config(function( $stateProvider, $urlRouterProvider ) {
 
@@ -8,7 +8,6 @@ angular.module('ecommerce', ['ui.router', 'ui.bootstrap'])
 	.state('home', {
 		url: '/',
 		templateUrl: './views/home/home.html',
-    // template: '<h2>hello</h2>',
 		controller: 'homeCtrl'
 	})
 	.state('contact', {
@@ -20,10 +19,10 @@ angular.module('ecommerce', ['ui.router', 'ui.bootstrap'])
 		templateUrl: './views/products/products.html',
 		controller: 'productsCtrl'
 	})
-	.state('productdetails', {
-		url: '/products/:id',
-		templateUrl: '/views/products/productdetails.html',
-		controller: 'productDetailsCtrl'
+	.state('customers', {
+		url: '/customers',
+		templateUrl: '/views/customers/customers.html',
+		controller: 'customersCtrl'
 	})
 
 	$urlRouterProvider.otherwise('/');

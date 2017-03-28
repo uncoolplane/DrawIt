@@ -10,7 +10,7 @@ angular.module('ecommerce').controller('productsCtrl', function($scope, products
 
   $ctrl.open = function (size, selectedProduct, editMode) {
     var modalInstance = $uibModal.open({
-      templateUrl: 'views/products/productdetailsmodal.html',
+      templateUrl: 'views/products/producctDetails.html',
       controller: function ($scope, $uibModalInstance, productsService) {
         $scope.product = selectedProduct || {};
         $scope.editMode = editMode;
