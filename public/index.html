@@ -35,9 +35,9 @@
                     <li><a ui-sref="contact" ng-click="setPage('contact')">Contact</a></li>
                 </ul>
                 <ul class="nav navbar-nav pull-right">
-                  <li><a href="#"><span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span></a></li>
-                  <li><a href="#">Profile</a></li>
-                  <li><a href="#" ng-show="!user.isAdmin">Admin</a></li>
+                  <li ng-show="!user"><a ui-sref="login">Login</a></li>
+                  <li ng-show="user"><a href="#"><span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span></a></li>
+                  <li ng-show="user"><a ui-sref="profile">Profile</a></li>
                 </ul>
             </div>
             <!--/.nav-collapse -->
@@ -70,9 +70,11 @@
 
     <!--Controllers-->
     <script src="views/home/homeCtrl.js" charset="utf-8"></script>
+    <script src="views/home/contactCtrl.js" charset="utf-8"></script>
+    <script src="views/home/loginCtrl.js" charset="utf-8"></script>
+    <script src="views/home/profileCtrl.js" charset="utf-8"></script>
     <script src="views/products/productsCtrl.js" charset="utf-8"></script>
     <script src="views/products/productDetailsCtrl.js" charset="utf-8"></script>
-    <script src="views/home/contactCtrl.js" charset="utf-8"></script>
     <script src="views/customers/customersCtrl.js" charset="utf-8"></script>
     <script src="views/customers/customerDetailsCtrl.js" charset="utf-8"></script>
 </body>

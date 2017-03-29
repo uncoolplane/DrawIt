@@ -9,11 +9,16 @@ var massive = require('massive');
 
 var config = require('./config');
 
+//authentication
+var FacebookStrategy = require('passport-facebook').Strategy;
+var passport = require('passport');
+
 //Routes
 var index = require('./routes/index');
-var users = require('./routes/users');
+// var users = require('./routes/users');
 var products = require('./routes/products');
 var customers = require('./routes/customers');
+var states = require('./routes/states');
 
 var app = express();
 
@@ -40,12 +45,51 @@ app.use(session({
   secret: config.sessionSecret
 }));
 
+app.use(passport.initialize());
+app.use(passport.session());
+
+passport.use(new FacebookStrategy({
+  clientID: config.facebook.clientID,
+  clientSecret: config.facebook.clientSecret,
+  callbackURL: config.facebook.callbackURL
+}, function(token, refreshToken, profile, done) {
+  return done(null, profile);
+}));
+
+//call facebook app for authentication --just middleware here, no callback
+app.get('/auth/facebook', passport.authenticate('facebook'));
+
+//facebook returns to this url to do something after authentication
+//pass string, middleware, callback function
+app.get('/auth/facebook/callback',
+  passport.authenticate('facebook', {
+     successRedirect: '/',
+     failureRedirect: '/auth/facebook'
+  }),
+  function(req, res, next) {
+    console.log(req, res);
+    return {
+      name: '',
+      email: ''
+    }
+  }
+);
+
+passport.serializeUser(function(user, done) {
+  done(null, user);
+});
+
+passport.deserializeUser(function(obj, done) {
+  done(null, obj);
+});
+
 var db = app.get('db');
 
 app.use('/', index);
-app.use('/users', users);
+// app.use('/users', users);
 app.use('/api', products);
 app.use('/api', customers);
+app.use('/api', states);
 
 //files
 // app.use('/upload', express.static(__dirname + '/uploads'));

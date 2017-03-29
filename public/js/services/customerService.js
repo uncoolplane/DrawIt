@@ -1,4 +1,14 @@
 angular.module('ecommerce').service('customerService', function($http) {
+  this.getStates = function() {
+    return $http({
+      method: 'GET',
+      url: '/api/states'
+    }).then(function(response) {
+      console.log('customerService/states', response.data);
+      return response.data;
+    })
+  }
+
   this.getCustomers = function() {
     return $http({
       method: 'GET',

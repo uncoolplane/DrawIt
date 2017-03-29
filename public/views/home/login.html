@@ -1,0 +1,34 @@
+<h2>Login</h2>
+
+<form ng-submit="signin()" name="loginForm" class="" action="" method="post" novalidate>
+  <div class="form-group">
+
+  <div class="text-center text-danger" ng-show="error">
+      <div class="alert alert-danger">
+        <strong ng-bind="error"></strong>
+      </div>
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="input-group">
+      <span class="input-group-addon"><i class="text-muted glyphicon glyphicon-user"></i></span>
+      <input name="username" ng-model="user.name" type="text" class="form-control" placeholder="Username" aria-describedby="basic-addon1">
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="input-group">
+      <span class="input-group-addon"><i class="text-muted glyphicon glyphicon-asterisk"></i></span>
+      <input name="password" ng-model="user.pasword" type="password" class="form-control" placeholder="Password" aria-describedby="basic-addon1">
+    </div>
+  </div>
+
+  <div class="text-center form-group">
+    <button class="btn btn-success btn-block" type="submit" name="button">Log In</button>
+  </div>
+
+  <div class="text-center form-group">
+    <a href="/auth/facebook" class="undecorated-link"><span class="glyphicon glyphicon-thumbs-up"></span>Use Facebook</a>
+    <a href="/#!/signup">Sign Up</a>
+  </div>
+
+</form>
