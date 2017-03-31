@@ -8,3 +8,8 @@ a {
 }
 
 .nav, .pagination, .carousel, .panel-title a { cursor: pointer; } /*for bootstrap-ng*/
+
+.grunge {
+
+  width: 80%;
+}

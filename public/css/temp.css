@@ -1,0 +1,13 @@
+.grunge {
+  /*background: url("http://lorempixum.com/400/200/technics/4");*/
+  /*width: 400px; height: 200px;*/
+  width: 80%;
+  margin: 50px;
+  -webkit-box-shadow: inset 0 0 20px black;
+     -moz-box-shadow: inset 0 0 20px black;
+          box-shadow: inset 0 0 20px black;
+}
+
+.grunge:hover {
+  background: url("http://designshack.net/wp-content/uploads/imagetreatments-texture3.png"), url("http://lorempixum.com/400/200/technics/4");
+}

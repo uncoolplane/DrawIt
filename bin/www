@@ -13,6 +13,7 @@ var http = require('http');
  */
  var port = normalizePort(process.env.PORT || '3737');
  app.set('port', port);
+ console.log("Running on port", port);
 
  var cors = require('cors');
  var corsOptions = {

@@ -19,6 +19,7 @@ var index = require('./routes/index');
 var products = require('./routes/products');
 var customers = require('./routes/customers');
 var states = require('./routes/states');
+var orders = require('./routes/orders');
 
 var app = express();
 
@@ -53,26 +54,65 @@ passport.use(new FacebookStrategy({
   clientSecret: config.facebook.clientSecret,
   callbackURL: config.facebook.callbackURL
 }, function(token, refreshToken, profile, done) {
-  return done(null, profile);
+  console.log('user logged in', profile, token);
+  var id,
+  name;
+
+  if(profile.emails) {
+    id= profile.emails[0].value;
+  } else {
+    // id=profile.displayName;
+    id=profile.id;
+  }
+  name = profile.displayName;
+
+  db.get_user_facebook([id], function(err, user) {
+    if(err) {
+      // console.log('getFacebookUser', id, err);
+      return done(err);
+    }
+
+    if(user && user.length > 0) {
+      console.log('found user...', user);
+      //TODO: Update user
+      return done(null, user);
+    } else {
+      console.log('inserting user...', id, name, token);
+      //name, email, password, profiletoken, facebookid
+      db.insert_user([name,
+      id,
+      '',
+      token,
+      0], function(err, user) {
+        if(err) {
+          console.log('getNewFacebookUser', id, err);
+          return done(err);
+        }
+
+        return done(null, {
+          name: name,
+          email: id,
+          password: '',
+          profiletoken: token
+        })
+      })
+    }
+  })
 }));
 
 //call facebook app for authentication --just middleware here, no callback
-app.get('/auth/facebook', passport.authenticate('facebook'));
+app.get('/auth/facebook', passport.authenticate('facebook', {scope: ['email']}));
 
 //facebook returns to this url to do something after authentication
 //pass string, middleware, callback function
 app.get('/auth/facebook/callback',
-  passport.authenticate('facebook', {
-     successRedirect: '/',
-     failureRedirect: '/auth/facebook'
-  }),
-  function(req, res, next) {
-    console.log(req, res);
-    return {
-      name: '',
-      email: ''
-    }
-  }
+passport.authenticate('facebook', {
+  successRedirect: '/',
+  failureRedirect: '/auth/facebook'
+}),
+function(req, res, next) {
+  return next(res);
+}
 );
 
 passport.serializeUser(function(user, done) {
@@ -90,6 +130,7 @@ app.use('/', index);
 app.use('/api', products);
 app.use('/api', customers);
 app.use('/api', states);
+app.use('/api', orders);
 
 //files
 // app.use('/upload', express.static(__dirname + '/uploads'));

@@ -13,6 +13,12 @@ angular.module('ecommerce').controller('customersCtrl', function($scope, custome
     });
   }
 
+  $scope.deleteCustomer = function(id) {
+    customersService.deleteCustomer().then(function(response) {
+      $scope.getCustomers();
+    })
+  }
+
   $scope.setPage = function(page) {
     usersService.setPage(page);
     $scope.page = usersService.page;

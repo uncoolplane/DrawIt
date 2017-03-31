@@ -34,6 +34,11 @@ angular.module('ecommerce', ['ui.router', 'ui.bootstrap', 'ngGrid'])
 		templateUrl: '/views/home/profile.html',
 		controller: 'profileCtrl'
 	})
+	.state('orders', {
+		url: '/orders/:id',
+		templateUrl: '/views/orders/orders.html',
+		controller: 'ordersCtrl'
+	})
 
 	$urlRouterProvider.otherwise('/');
 

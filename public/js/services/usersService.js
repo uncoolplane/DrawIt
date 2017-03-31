@@ -17,14 +17,18 @@ angular.module('ecommerce').service('usersService', function($http) {
   };
 
   _this.signin = function(user) {
-    $http.post('/auth/signin', user).success(function(response) {
-      return response;
+    $http.get('/auth/facebook', user).success(function(response) {
+      console.log('ng-signin', response);
+      _this.user = response.data;
+      return response.data;
     })
   }
 
+//TOOD: not working yet, no route
   _this.signup = function(user) {
     $http.post('/auth/signup', user).success(function(response) {
-      return response;
+      console.log('ng-signup', response);
+      return response.data;
     })
   }
 
