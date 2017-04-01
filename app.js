@@ -15,7 +15,6 @@ var passport = require('passport');
 
 //Routes
 var index = require('./routes/index');
-// var users = require('./routes/users');
 var products = require('./routes/products');
 var customers = require('./routes/customers');
 var states = require('./routes/states');
@@ -55,8 +54,7 @@ passport.use(new FacebookStrategy({
   callbackURL: config.facebook.callbackURL
 }, function(token, refreshToken, profile, done) {
   console.log('user logged in', profile, token);
-  var id,
-  name;
+  var id,  name;
 
   if(profile.emails) {
     id= profile.emails[0].value;
@@ -73,21 +71,23 @@ passport.use(new FacebookStrategy({
     }
 
     if(user && user.length > 0) {
-      console.log('found user...', user);
-      //TODO: Update user
+      console.log('found user, updating...', user);
+      //TODO: Update user?
+      session.user = user;
+      console.log('setting session user-->', session.user);
       return done(null, user);
     } else {
       console.log('inserting user...', id, name, token);
       //name, email, password, profiletoken, facebookid
-      db.insert_user([name,
-      id,
-      '',
-      token,
-      0], function(err, user) {
+      db.insert_user([name, id, '', token, 0],
+      function(err, user) {
         if(err) {
           console.log('getNewFacebookUser', id, err);
           return done(err);
         }
+
+        session.user = user;
+        console.log('setting session user-->', session.user);
 
         return done(null, {
           name: name,
@@ -114,6 +114,11 @@ function(req, res, next) {
   return next(res);
 }
 );
+
+app.get('/whoami', function(req, res, done) {
+  console.log('authenticate', session.user);
+  return res.send(session.user);
+})
 
 passport.serializeUser(function(user, done) {
   done(null, user);

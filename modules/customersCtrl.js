@@ -15,6 +15,17 @@ module.exports = {
       res.send(customer);
     })
   },
+  getCustomerByUser: function(req, res, next) {
+    var db = req.app.get('db');
+    var id = req.params.id;
+    console.log('getCustomerByUser', id);
+    db.get_user_customer([id], function(err, customer) {
+      if(err) {
+        console.log('getCustomerByUser', id, err);
+      }
+      res.send(customer);
+    })
+  },
   createCustomer: function(req, res, next) {
     var db = req.app.get('db');
     var customer = req.body;

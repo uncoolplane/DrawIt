@@ -1,0 +1,66 @@
+<h2>User Profile</h2>
+
+<form ng-submit="signup(customer, user)" name="profileForm" required novalidate>
+  <div class="form-group">
+
+    <div class="text-center text-danger" ng-show="error">
+      <div class="alert alert-danger">
+        <strong ng-bind="error"></strong>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col col-lg-6 col-md-6 col-sm-12 col-xs-12">
+
+      <fieldset name="UserDetails">
+        <div class="form-group">
+          <label for="firstname">First Name</label>
+          <input type="text" name="firstname" ng-model="customer.firstname" class="form-control" required >
+        </div>
+        <div class="form-group">
+          <label for="lastname">Last Name</label>
+          <input type="text" name="lastname" ng-model="customer.lastname" class="form-control" required >
+        </div>
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="text" name="email" ng-model="customer.email" class="form-control" required >
+        </div>
+        <div class="form-group">
+          <label for="phonenumber">Phone Number</label>
+          <input type="text" name="phonenumber" ng-model="customer.phonenumber" class="form-control">
+        </div>
+      </fieldset>
+
+    </div>
+    <div class="col col-lg-6 col-md-6 col-sm-12 col-xs-12">
+      <fieldset name="ContactInformation">
+        <div class="form-group">
+          <label for="address">Address</label>
+          <input type="text" name="address" ng-model="customer.address" class="form-control" required >
+        </div>
+        <div class="form-group">
+          <label for="city">City</label>
+          <input type="text" name="city" ng-model="customer.city" class="form-control" required >
+        </div>
+        <div class="form-group">
+          <label for="state">State</label>
+          <select class="form-control" name="state" ng-model="customer.state" required >
+            <option ng-repeat="state in states" ng-value="state.label">{{state.description}}</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="zipcode">Zip Code</label>
+          <input type="text" name="zipcode" ng-model="customer.zipcode" class="form-control" required >
+        </div>
+
+      </fieldset>
+
+    </div>
+  </div>
+
+  <div class="text-center form-group">
+    <button class="btn btn-success btn-block" type="submit" name="button">Save Changes</button>
+  </div>
+
+</form>

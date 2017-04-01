@@ -19,6 +19,16 @@ angular.module('ecommerce').service('customerService', function($http) {
     })
   }
 
+  this.getCustomerByUser = function(userid) {
+    return $http({
+      method: 'GET',
+      url: '/api/customeruser/' + userid
+    }).then(function(response) {
+      console.log('customerService', response.data);
+      return response.data;
+    })
+  }
+
   this.getCustomer = function(id) {
     return $http({
       method: 'GET',

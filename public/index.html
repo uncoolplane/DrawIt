@@ -35,7 +35,7 @@
                     <li><a ui-sref="contact" ng-click="setPage('contact')">Contact</a></li>
                 </ul>
                 <ul class="nav navbar-nav pull-right">
-                  <li ng-show="!user"><a ui-sref="login">Login</a></li>
+                  <li ng-show="!user"><a href="/auth/facebook"><span class="glyphicon glyphicon-thumbs-up"></span>Login</a></li>
                   <li ng-show="user"><a href="#"><span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span></a></li>
                   <li ng-show="user"><a ui-sref="profile">Profile</a></li>
                 </ul>
@@ -44,6 +44,7 @@
         </div>
     </nav>
 
+    <drawit-nav></drawit-nav>
     <div class="container">
         <ui-view></ui-view>
     </div>
@@ -57,6 +58,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.4.2/angular-ui-router.js" charset="utf-8"></script>
     <script src="js/library/angular-animate.js" charset="utf-8"></script>
     <script src="js/library/angular-touch.js" charset="utf-8"></script>
+    <!-- <script src="js/library/angular-messages.js" charset="utf-8"></script> -->
     <script src="js/library/ui-bootstrap-tpls-2.5.0.js" charset="utf-8"></script>
 
     <!--Application-->
@@ -68,12 +70,13 @@
 
     <!--Components-->
     <script src="http://cdnjs.cloudflare.com/ajax/libs/ng-grid/2.0.11/ng-grid.min.js"></script>
+    <script src="js/components/nav.js" charset="utf-8"></script>
 
     <!--Controllers-->
     <script src="views/home/homeCtrl.js" charset="utf-8"></script>
     <script src="views/home/contactCtrl.js" charset="utf-8"></script>
-    <script src="views/home/loginCtrl.js" charset="utf-8"></script>
-    <script src="views/home/profileCtrl.js" charset="utf-8"></script>
+    <script src="views/login/loginCtrl.js" charset="utf-8"></script>
+    <script src="views/profile/profileCtrl.js" charset="utf-8"></script>
     <script src="views/products/productsCtrl.js" charset="utf-8"></script>
     <script src="views/products/productDetailsCtrl.js" charset="utf-8"></script>
     <script src="views/customers/customersCtrl.js" charset="utf-8"></script>

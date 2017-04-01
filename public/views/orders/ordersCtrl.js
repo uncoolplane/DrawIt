@@ -1,4 +1,8 @@
 angular.module('ecommerce').controller('ordersCtrl', function($scope, customerService, usersService, ordersService) {
+  usersService.authenticate().then(function(response) {
+      $scope.user = response;
+  });
+
   $scope.init = function() {
     var customerid = req.params.id;
     $scope.getCustomer(customerid);

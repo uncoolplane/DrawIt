@@ -1,4 +1,8 @@
 angular.module('ecommerce').controller('customersCtrl', function($scope, customerService, usersService) {
+  usersService.authenticate().then(function(response) {
+      $scope.user = response;
+  });
+
   $scope.init = function() {
     $scope.getCustomers();
     $scope.page = usersService.page;

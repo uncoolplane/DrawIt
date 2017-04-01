@@ -1,4 +1,7 @@
 angular.module('ecommerce').controller('productsCtrl', function($scope, productsService, usersService/*, Files*/, $uibModal, $log) {
+  usersService.authenticate().then(function(response) {
+      $scope.user = response;
+  });
 
   $scope.init = function() {
     $scope.getProducts();

@@ -1,3 +1,6 @@
 angular.module('ecommerce').controller('contactCtrl', function($scope, usersService) {
-  $scope.user = usersService.loadUser();
+  usersService.authenticate().then(function(response) {
+      $scope.user = response;
+  });
+
 })
