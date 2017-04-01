@@ -29,6 +29,7 @@ module.exports = {
   createCustomer: function(req, res, next) {
     var db = req.app.get('db');
     var customer = req.body;
+    console.log('node\\createCustomer', customer);
     if(!customer.userid) {
       var userid = session.userid; //TODO: set current user id if empty & not admin
     }

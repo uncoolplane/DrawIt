@@ -7,7 +7,7 @@ angular.module('ecommerce').controller('profileCtrl', function($scope, $location
 
   $scope.init = function() {
     $scope.getStates();
-    $scope.getCustomerByUser($scope.user.id)
+    $scope.getCustomerByUser();
   }
 
   $scope.getStates = function() {
@@ -17,9 +17,11 @@ angular.module('ecommerce').controller('profileCtrl', function($scope, $location
     })
   }
 
-  $scope.getCustomerByUser = function(userid) {
-    customerService.getCustomerByUser(userid).then(function(response) {
-      $scope.customer = response;
+  $scope.getCustomerByUser = function() {
+    if(!$scope.user) return;
+    var id = $scope.user[0].id;
+    customerService.getCustomerByUser(id).then(function(response) {
+      $scope.customer = response[0];
     })
   }
 
