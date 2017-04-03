@@ -9,6 +9,7 @@
     "angular": "^1.6.3",
     "angular-bootstrap": "*",
     "angular-ui-bootstrap": "^2.5.0",
+    "angular-ui-grid": "^3.2.11",
     "angularjs": "0.0.1",
     "body-parser": "~1.16.0",
     "bootstrap": "^3.3.7",

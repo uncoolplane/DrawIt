@@ -1,6 +1,6 @@
 /*https://angular-ui.github.io/bootstrap/*/
 
-angular.module('ecommerce', ['ui.router', 'ui.bootstrap', 'ngGrid'])
+angular.module('ecommerce', ['ui.router', 'ui.bootstrap', 'ui.grid'])
 //, 'ngMessages'
 .config(function( $stateProvider, $urlRouterProvider ) {
 
@@ -23,6 +23,11 @@ angular.module('ecommerce', ['ui.router', 'ui.bootstrap', 'ngGrid'])
 		url: '/customers',
 		templateUrl: '/views/customers/customers.html',
 		controller: 'customersCtrl'
+	})
+	.state('customerOrder', {
+		url: 'customerOrder/:id',
+		templateUrl: '/views/customerOrders/customerOrders.html',
+		controller: 'customerOrdersCtrl'
 	})
 	.state('login', {
 		url: '/login',
