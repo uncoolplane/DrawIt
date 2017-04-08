@@ -7,11 +7,12 @@ angular.module('ecommerce').controller('customerOrdersCtrl', function($scope, $s
   $scope.getCustomer = function() {
     var id = $stateParams.id;
     customerService.getCustomer(id).then(function(response) {
-      $scope.customer = response;
+      $scope.customer = response[0];
     })
   }
 
   $scope.getOrders = function() {
+    if(!$scope.customer) return;
     ordersService.getOrdersByCustomer($scope.customer.id).then(function(response) {
       $scope.orders = response;
     })

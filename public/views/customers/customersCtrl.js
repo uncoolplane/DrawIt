@@ -8,11 +8,26 @@ angular.module('ecommerce').controller('customersCtrl', function($scope, $locati
     $scope.page = usersService.page;
     console.log('customerCtrl', $scope.user);
 
+  function rowTemplate() {
+    return '<div ng-dblclick="grid.appScope.rowDoubleClick(row)" >' +
+                '  <div ng-repeat="(colRenderIndex, col) in colContainer.renderedColumns track by col.colDef.name" class="ui-grid-cell" ng-class="{ \'ui-grid-row-header-cell\': col.isRowHeader }"  ui-grid-cell>'+
+                 ' </div> ' +
+               '</div>';
+    }
+
+    $scope.rowDoubleClick = function (row) {
+        // alert(console.log(row.entity));
+       $location.path('/customerOrder/' + row.entity.id);
+    };
+
     $scope.gridOptions =
     {
       data: 'customers',
       enablePaging: true,
+      enableFiltering: true,
+      enableCellEditOnFocus: true,
       enableRowSelection: true,
+      rowTemplate: rowTemplate(),
       columnDefs:
       [
       { field: 'firstname', displayName: 'First Name'},

@@ -25,7 +25,7 @@ angular.module('ecommerce', ['ui.router', 'ui.bootstrap', 'ui.grid'])
 		controller: 'customersCtrl'
 	})
 	.state('customerOrder', {
-		url: 'customerOrder/:id',
+		url: '/customerOrder/:id',
 		templateUrl: '/views/customerOrders/customerOrders.html',
 		controller: 'customerOrdersCtrl'
 	})
