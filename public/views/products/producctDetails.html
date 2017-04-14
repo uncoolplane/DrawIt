@@ -44,7 +44,7 @@
   </div>
 
   <div ng-if="!editMode">
-    <button class="btn btn-success" type="button" name="button">Add to Cart</button>
+    <button class="btn btn-success" type="button" name="button" ng-click="productCtrl.addToCart(product); ok()">Add to Cart</button>
 
     <button class="btn btn-warning" type="button" ng-click="cancel()">Close</button>
   </div>

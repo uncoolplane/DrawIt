@@ -44,6 +44,11 @@ angular.module('ecommerce', ['ui.router', 'ui.bootstrap', 'ui.grid'])
 		templateUrl: '/views/orders/orders.html',
 		controller: 'ordersCtrl'
 	})
+	.state('cart', {
+		url: '/cart',
+		templateUrl: '/views/cart/cart.html',
+		controller: 'cartCtrl'
+	})
 
 	$urlRouterProvider.otherwise('/');
 

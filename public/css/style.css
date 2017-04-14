@@ -1,3 +1,26 @@
+/*html {
+  background: url('../images/samuel-zeller-16570.jpg');
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}*/
+
+.grunge {
+  width: 80%;
+}
+
+#bg {
+  /*display: none;*/
+  position: fixed;
+  top: 0;
+  left: 0;
+
+  /* Preserve aspet ratio */
+  min-width: 100%;
+  min-height: 100%;
+}
+
 body {
   padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
@@ -8,11 +31,6 @@ a {
 }
 
 .nav, .pagination, .carousel, .panel-title a { cursor: pointer; } /*for bootstrap-ng*/
-
-.grunge {
-
-  width: 80%;
-}
 
 .myGrid {
     width: 100%;

@@ -1,4 +1,4 @@
-angular.module('ecommerce').controller('productsCtrl', function($scope, productsService, usersService/*, Files*/, $uibModal, $log) {
+angular.module('ecommerce').controller('productsCtrl', function($scope, productsService, usersService/*, Files*/, $uibModal, $log, cartService) {
   usersService.authenticate().then(function(response) {
       $scope.user = response;
   });
@@ -14,7 +14,7 @@ angular.module('ecommerce').controller('productsCtrl', function($scope, products
   $ctrl.open = function (size, selectedProduct, editMode) {
     var modalInstance = $uibModal.open({
       templateUrl: 'views/products/producctDetails.html',
-      controller: function ($scope, $uibModalInstance, productsService) {
+      controller: function ($scope, $uibModalInstance, productsService, cartService) {
         $scope.product = selectedProduct || {};
         $scope.editMode = editMode;
 
