@@ -1,16 +1,18 @@
 
-<h2>Your Cart</h2>
 <div class="jumbotron" ng-if="!user">
   <h3>It looks like you haven't logged in yet</h3>
   <a class="btn btn-primary btn-lg"  href="/auth/facebook" class="undecorated-link"><span class="glyphicon glyphicon-thumbs-up"></span>Use Facebook</a>
 </div>
 
+<h2>Your Cart</h2>
 <div class="jumbotron" ng-if="user && (!products || products.length == 0)">
   <h3>It doesn't look like you have anything in your cart</h3>
   <p><a class="btn btn-primary btn-lg" ui-sref="products" role="button">View Products</a></p>
 </div>
 
-<ul class="list-group" ng-if="products">
+<div class="" ng-if="products">
+
+<ul class="list-group">
   <li class="list-group-item" ng-repeat="item in products">
     <div class="row">
       <div class="col-md-9">
@@ -33,3 +35,6 @@
     </div>
   </li>
 </ul>
+
+<p><a class="btn btn-primary btn-lg" role="button" ng-click="placeOrder()">Place Order</a></p>
+</div>

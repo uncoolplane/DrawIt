@@ -49,4 +49,5 @@ angular.module('ecommerce').service('cartService', function($http) {
     }
     console.log('cartService', _this.cart);
   }
+
 })

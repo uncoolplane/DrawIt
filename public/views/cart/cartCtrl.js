@@ -1,4 +1,4 @@
-angular.module('ecommerce').controller('cartCtrl', function($scope, cartService, customerService, usersService) {
+angular.module('ecommerce').controller('cartCtrl', function($scope, cartService, usersService) {
   usersService.authenticate().then(function(response) {
     $scope.user = response;
   });
