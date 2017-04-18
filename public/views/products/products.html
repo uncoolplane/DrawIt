@@ -12,11 +12,9 @@
   </a>
   <hr>
   <button type="button" class="btn btn-primary" ng-click="$ctrl.open('lg', product, false)">View Details</button>
-  <button type="button" class="btn btn-default" ng-click="$ctrl.open('lg', product, true)">Edit Product</button>
-</div>
+  <button type="button" class="hidden btn btn-default" ng-click="$ctrl.open('lg', product, true)">Edit Product</button>
 
-<!-- <span ng-if="isModal">
-  <modal name="product.id" title="product.name" message="product.description"></modal>
-</span> -->
+  <a class="btn btn-default" ui-sref="productDetail({id: product.id})">Edit Product* {{product.id}}</a>
+</div>
 
 </section>

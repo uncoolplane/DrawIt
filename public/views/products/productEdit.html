@@ -1,0 +1,25 @@
+<form name="productForm">
+  <div class="input-group col-lg-6 col-md-6 col-sm-12 col-xs-12">
+    <label for="fullname">Product Name</label>
+      <input type="text" class="form-control" name="fullname" placeholder="Product Name" ng-model="product.name" required ng-required="true">
+      <p ng-show="productForm.fullname.$invalid && !productForm.fullname.$pristine" class="help-block">Product name is required.</p>
+  </div>
+  <div class="input-group col-lg-6 col-md-6 col-sm-12 col-xs-12">
+    <label for="unitprice">Unit Price</label>
+      <input type="text" class="form-control" name="unitprice" placeholder="Unit Price" ng-model="product.unitprice" required ng-required="true">
+      <p ng-show="productForm.unitprice.$invalid && !productForm.unitprice.$pristine" class="help-block">Unit price is required.</p>
+  </div>
+  <div class="input-group  col-lg-6 col-md-6 col-sm-12 col-xs-12">
+
+  </div>
+  <div class="input-group col-lg-6 col-md-6 col-sm-12 col-xs-12">
+    <label for="description">Description</label>
+      <textarea class="form-control" name="description" placeholder="Description" ng-model="product.description">
+    </textarea>
+  </div><br>
+
+  <div class="input-group">
+    <a class="btn btn-default">Save Changes</a>
+    <a class="btn">Cancel</a>
+  </div>
+</form>

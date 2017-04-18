@@ -19,6 +19,11 @@ angular.module('ecommerce', ['ui.router', 'ui.bootstrap', 'ui.grid'])
 		templateUrl: './views/products/products.html',
 		controller: 'productsCtrl'
 	})
+	.state('productDetail', {
+		url: '/productDetail/:id',
+		templateUrl: './views/products/productEdit.html',
+		controller: 'productEditCtrl'
+	})
 	.state('customers', {
 		url: '/customers',
 		templateUrl: '/views/customers/customers.html',
