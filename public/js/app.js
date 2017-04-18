@@ -1,6 +1,6 @@
 /*https://angular-ui.github.io/bootstrap/*/
 
-angular.module('ecommerce', ['ui.router', 'ui.bootstrap', 'ui.grid'])
+angular.module('ecommerce', ['ui.router', 'ui.bootstrap', 'ui.grid','uploadFileService', 'fileModelDirective'])
 //, 'ngMessages'
 .config(function( $stateProvider, $urlRouterProvider ) {
 
