@@ -1,4 +1,4 @@
-angular.module('ecommerce').controller('productsCtrl', function($scope, productsService, usersService/*, Files*/, $uibModal, $log, cartService) {
+angular.module('ecommerce').controller('productsCtrl', function($scope, productsService, usersService, $uibModal, $log, cartService) {
   usersService.authenticate().then(function(response) {
       $scope.user = response;
   });
@@ -52,16 +52,6 @@ angular.module('ecommerce').controller('productsCtrl', function($scope, products
       $scope.products = response;
     })
   }
-
-  // $scope.upload = function (files) {
-  //     if (files && files.length) {
-  //         Files.upload(files).then(function (data) {
-  //             console.log('Uploaded successfully');
-  //         }).catch(function(){
-  //             console.log('Upload failed');
-  //         });
-  //     }
-  // };
 
   $scope.init();
 })
