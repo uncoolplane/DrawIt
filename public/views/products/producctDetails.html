@@ -4,10 +4,16 @@
   <h3 class="modal-title" id="modal-title">{{product.name}}</h3>
 </div>
 <div class="modal-body" id="modal-body">
-  <div class="" ng-if="!editMode">
+  <div class="row">
+
+  <div class="col-md-1">
+    <img class="img-responsive-sm" ng-src="{{item.product.imageurl || 'images/app_product.png'}}" alt="{{item.product.name}}"  onerror="if (this.src != 'app_product.png') this.src = 'images/app_product.png';">
+  </div>
+  <div class="col-md-11" ng-if="!editMode">
     {{product.description}}
 
-    <div class="pull-right">{{product.unitprice}}</div>
+    <div class="pull-right">{{productCtrl.format(product.unitprice)}}</div>
+  </div>
   </div>
 
   <div class="" ng-if="editMode">

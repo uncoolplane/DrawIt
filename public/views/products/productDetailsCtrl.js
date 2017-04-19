@@ -22,4 +22,9 @@ angular.module('ecommerce').controller('productDetailsCtrl', function($scope, pr
     }
   }
 
+  this.format = function (num) {
+    var number = numeral(num);
+    numeral.defaultFormat('$0,0.00');
+    return number.format();    // '$1,000.00'
+  }
 })

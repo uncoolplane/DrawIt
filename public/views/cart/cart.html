@@ -15,9 +15,15 @@
 <ul class="list-group">
   <li class="list-group-item" ng-repeat="item in products">
     <div class="row">
-      <div class="col-md-9">
+      <div class="col-md-1">
+        <img class="img-responsive-sm" ng-src="{{item.product.imageurl || 'images/app_product.png'}}" alt="{{item.product.name}}"  onerror="if (this.src != 'app_product.png') this.src = 'images/app_product.png';">
+      </div>
+      <div class="col-md-6">
         <h4 class="list-group-item-heading">{{item.product.name}}</h4>
         <p class="list-group-item-text">{{item.product.description}}</p>
+      </div>
+      <div class="col-md-2">
+        {{format(item.product.unitprice)}}
       </div>
       <div class="col-md-2">
         <!-- <span class="badge">{{item.quantity}}</span> -->
@@ -36,5 +42,12 @@
   </li>
 </ul>
 
-<p><a class="btn btn-primary btn-lg" role="button" ng-click="placeOrder()">Place Order</a></p>
+<div class="row">
+  <div class="col-md-6">
+    <a class="btn btn-primary btn-lg" role="button" ng-click="placeOrder()">Place Order</a>
+  </div>
+  <div class="col-md-6 pull-right">
+    <b>Total: {{format(total)}}</b>
+  </div>
+</div>
 </div>
