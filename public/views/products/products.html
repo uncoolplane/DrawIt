@@ -1,20 +1,23 @@
-<!-- <img id="bg" src="images/samuel-zeller-16570.jpg" alt="" > -->
 <section ng-controller="productsCtrl as $ctrl" >
 
 <h2>Products</h2>
 <div class="">
-  <button type="button" class="btn btn-primary" ng-click="$ctrl.open('lg', null, true)">Add Product</button>
+  <!-- <button type="button" class="btn btn-primary" ng-click="$ctrl.open('lg', null, true)">Add Product</button> -->
+  <a class="btn btn-default" ui-sref="productDetail">New Product</a>
+
+  <br><br>
 </div>
 
 <div class="modal-product col-lg-3 col-md-4 col-xs-6 thumb" ng-repeat="product in products track by $index">
   <a class="thumbnail">
-    <img class="img-responsive" src="http://placehold.it/400x300?text={{product.name}}" alt="">
+    <!-- <img class="img-responsive" src="http://placehold.it/400x300?text={{product.name}}" alt=""> -->
+    <img class="img-responsive" ng-src="{{product.imageurl || 'images/app_product.png'}}" alt="{{product.name}}"  onerror="if (this.src != 'app_product.png') this.src = 'images/app_product.png';">
   </a>
   <hr>
   <button type="button" class="btn btn-primary" ng-click="$ctrl.open('lg', product, false)">View Details</button>
   <button type="button" class="hidden btn btn-default" ng-click="$ctrl.open('lg', product, true)">Edit Product</button>
 
-  <a class="btn btn-default" ui-sref="productDetail({id: product.id})">Edit Product* {{product.id}}</a>
+  <a class="btn btn-default" ui-sref="productDetail({id: product.id})">Edit Product</a>
 </div>
 
 </section>

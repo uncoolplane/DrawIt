@@ -38,6 +38,11 @@
         </div>
       </div>
 
+      <div ng-show="message">
+        <div ng-class="alert">{{ message }}</div>
+      </div>
+      <br>
+      <br>
       <form ng-submit="Submit();">
         <label class="btn btn-success">
           Browse
@@ -52,12 +57,6 @@
 
       <img class="mythumbnail" ng-src="{{ thumbnail.dataUrl || defaultUrl }}">
 
-      <br>
-      <br>
-
-      <div ng-show="message">
-        <div ng-class="alert">{{ message }}</div>
-      </div>
 
     </div>
   </div>

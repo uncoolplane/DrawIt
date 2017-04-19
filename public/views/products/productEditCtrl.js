@@ -7,7 +7,7 @@ angular.module('ecommerce').controller('productEditCtrl', function($scope, produ
     $scope.file = {};
     $scope.message = false;
     $scope.alert = '';
-    $scope.defaultUrl = 'https://thebenclark.files.wordpress.com/2014/03/facebook-default-no-profile-pic.jpg';
+    $scope.defaultUrl = 'images/app_product.png';
 
     $scope.id = $stateParams.id;
       productsService.getProduct($scope.id).then(
@@ -41,7 +41,6 @@ angular.module('ecommerce').controller('productEditCtrl', function($scope, produ
           if (data.data.success) {
               $scope.uploading = false;
               $scope.alert = 'alert alert-success';
-              // $scope.product.imageurl = $scope.thumbnail.dataUrl || default;
               $scope.message = data.data.message;
               $scope.file = {};
           } else {
@@ -63,6 +62,9 @@ angular.module('ecommerce').controller('productEditCtrl', function($scope, produ
               $timeout(function() {
                   $scope.thumbnail = {};
                   $scope.thumbnail.dataUrl = e.target.result;
+                  if(!$scope.product.imageurl) {
+                    $scope.product.imageurl = 'images/' + file.name || $scope.defaultUrl;
+                  }
                   $scope.uploading = false;
                   $scope.message = false;
               });
