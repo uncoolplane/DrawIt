@@ -33,7 +33,7 @@ angular.module('ecommerce').service('ordersService', function($http) {
   this.updateOrder = function(order) {
     return $http({
       method: 'POST',
-      url: 'api/product',
+      url: 'api/order',
       data: order
     }).then(function(response) {
       console.log('ordersService', response.data);

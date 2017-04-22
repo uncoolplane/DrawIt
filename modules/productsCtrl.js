@@ -18,7 +18,14 @@ module.exports = {
     createProduct: function(req, res, next) {
       var db = req.app.get('db');
       var product = req.body;
-      db.create_product([product.name,product.description,product.unitprice,product.imageurl], function(err, product) {
+      // db.create_product([product.name,product.description,product.unitprice,product.imageurl],
+      db.products.save({
+        name: product.name,
+        description: product.description,
+        unitprice: product.unitprice,
+        imageurl: product.imageurl
+      },
+      function(err, product) {
         if(err) {
           console.log('createProduct', product, err);
         }

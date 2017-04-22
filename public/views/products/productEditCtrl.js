@@ -10,6 +10,7 @@ angular.module('ecommerce').controller('productEditCtrl', function($scope, produ
     $scope.defaultUrl = 'images/app_product.png';
 
     $scope.id = $stateParams.id;
+    if($scope.id) {
       productsService.getProduct($scope.id).then(
         function(data) {
           $scope.product = data[0];
@@ -19,6 +20,9 @@ angular.module('ecommerce').controller('productEditCtrl', function($scope, produ
           }
         }
       );
+    } else {
+      $scope.product = {}
+    }
   }
 
   $scope.updateProduct = function(updatedProduct) {
@@ -32,6 +36,7 @@ angular.module('ecommerce').controller('productEditCtrl', function($scope, produ
       })
     }
 
+    $scope.product = {};
     $location.path('/products');
   }
 

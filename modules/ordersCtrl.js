@@ -30,12 +30,21 @@ module.exports = {
   },
   createOrder: function(req, res, next) {
     var db = req.app.get('db');
+    console.log('------>createOrder', req.body);
     var order = req.body;
-    db.create_order([order.ordernumber, order.orderdate, order.shipdate, order.customerid], function(err, order) {
+    // db.create_order([order.ordernumber, order.orderdate, order.shipdate, order.customerid],
+    db.orders.save({
+      ordernumber: order.ordernumber,
+      orderdate: order.orderdate,
+      shipdate: order.shipdate,
+      customerid: order.customerid
+    },
+    function(err, neworder) {
+      console.log('createorder.db', neworder);
       if(err) {
-        console.log('createOrder', order, err);
+        console.log('createOrder', neworder, err);
       }
-      res.send(order);
+      res.send(neworder);
     })
   },
   updateOrder: function(req, res, next) {

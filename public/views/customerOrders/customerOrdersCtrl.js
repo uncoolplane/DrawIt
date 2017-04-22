@@ -1,12 +1,24 @@
-angular.module('ecommerce').controller('customerOrdersCtrl', function($scope, $stateParams, customerService, ordersService) {
+angular.module('ecommerce').controller('customerOrdersCtrl', function($scope, $stateParams, customerService, ordersService, usersService) {
+  usersService.authenticate().then(function(response) {
+    $scope.user = response;
+  });
+
+  $scope.getCustomerByUser = function() {
+    if(!$scope.user) return;
+    var id = $scope.user[0].id;
+    customerService.getCustomerByUser(id).then(function(response) {
+      $scope.customer = response[0];
+    })
+  }
+
   $scope.init = function() {
-    $scope.getCustomer();
+    $scope.getCustomerByUser();
     $scope.getOrders();
   }
 
   $scope.getCustomer = function() {
     var id = $stateParams.id;
-    customerService.getCustomer(id).then(function(response) {
+    customerService.getCustomerByUser(id).then(function(response) {
       $scope.customer = response[0];
     })
   }
